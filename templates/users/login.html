@@ -1,0 +1,48 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<section>
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+          <div class="card d-flex justify-content-center p-4 shadow-lg">
+            <div class="text-center">
+              <h3 class="text-gradient">Login Into Your Account</h3>
+             
+            </div>
+            <div class="card card-plain">
+              <form method="POST">
+                {% csrf_token %}
+                <div class="card-body pb-2">
+                  <!-- <div class="row"> -->
+                    
+                    <div class="col-md-6 ps-md-2">
+                      <label>Username</label>
+                      <div class="input-group">
+                        <input type="input" name="username" class="form-control" placeholder="hello@user.com" >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Password</label>
+                        <div class="input-group mb-4">
+                          <input class="form-control" name="password" placeholder="Password" aria-label="Password" type="password" >
+                        </div>
+                      </div>
+                  <div>
+                    <small><a href="{% url 'register-customer' %}"> Register</a></small>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+{% if request.user.is_customer %}
+<p>Hello Customer</p>
+{% elif request.user.is_engineer %}
+<p>Hello Engineer</p>
+{% endif %}
+
+
+
+{% endblock content %} 

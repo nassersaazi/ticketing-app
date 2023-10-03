@@ -1,0 +1,59 @@
+{% extends 'users/base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+<section class="intro">
+    <div class="gradient-custom-1 h-100">
+      <div class="mask d-flex align-items-center h-100">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="table-responsive bg-white">
+                <h4 class="card-title mb-2">Workspace</h4>
+                <table class="table mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col">Ticket ID</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Assigned To</th>
+                      <th scope="col">Created On</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for ticket in tickets %}
+                    <tr>
+                      <td><small>{{ticket.ticket_number}}</small></td>
+                      <td><small>{{ticket.title}}</small></td>
+                  
+                      <td><small>{{ticket.assigned_to}}</small></td>
+                      <td><small>{{ticket.date_created}}</small></td>
+                      {% if ticket.ticket_status == 'Active' %}
+                      <td><span class="badge bg-success">Active</span></td>
+                      {% elif ticket.ticket_status == 'Pending' %}
+                      <td><span class="badge bg-warning">Pending</span></td>
+                      {% elif ticket.ticket_status == 'Completed' %}
+                      <td><span class="badge bg-danger">Completed</span></td>
+                      {% endif %}
+                      <td><small><a href="{% url 'ticket-details' ticket.pk %}">View Details</a></small></td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                    
+                    
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock content %} 
